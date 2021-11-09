@@ -9,7 +9,7 @@ function App(): JSX.Element {
         <Route path="/" element={<p>Main</p>} />
         <Route path="/about" element={<p>About</p>} />
         <Route path="/stuff">
-          <Route path=":item" element={<Stuff />}></Route>
+          <Route path=":item" element={<Stuff color="#334348" />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

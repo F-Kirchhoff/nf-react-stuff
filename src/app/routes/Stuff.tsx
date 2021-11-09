@@ -1,13 +1,20 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
-function Stuff(): JSX.Element {
+type StuffProps = {
+  color: string;
+};
+
+function Stuff({ color }: StuffProps): JSX.Element {
   const { item } = useParams();
-  return (
-    <div>
-      <p> Stuff: {item}</p>
-    </div>
-  );
+  return <StuffContainer color={color}>Stuff: {item}</StuffContainer>;
 }
 
 export default Stuff;
+
+const StuffContainer = styled.div`
+  padding: 20px;
+  background-color: ${(props) => props.color};
+  color: white;
+`;
