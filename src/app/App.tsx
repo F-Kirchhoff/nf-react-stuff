@@ -1,16 +1,22 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Stuff from './routes/Stuff';
+import Card from './components/Card/Card';
+
+const TESTSTUFF = {
+  id: 1,
+  name: "Marf's Magic Cards",
+  description: 'A few decks for all the colors',
+  categories: ['game', 'collectible', 'art', 'paper'],
+};
 
 function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<p>Main</p>} />
-        <Route path="/about" element={<p>About</p>} />
-        <Route path="/stuff">
-          <Route path=":item" element={<Stuff color="#334348" />}></Route>
-        </Route>
+        <Route
+          path="/"
+          element={<Card payload={TESTSTUFF} showDetails={true} />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
