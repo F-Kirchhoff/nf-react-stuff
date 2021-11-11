@@ -1,46 +1,34 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Tag from '../Tag/Tag';
 
-type stuff = {
+type Stuff = {
   id: number;
   name: string;
   description: string;
-  categories: string[];
 };
 
 type CardProps = {
-  payload: stuff;
-  showDetails: boolean;
+  payload: Stuff;
 };
 
-function Card({ payload, showDetails }: CardProps): JSX.Element {
-  const { name, description, categories } = payload;
+function Card({ payload }: CardProps): JSX.Element {
+  const { name, description } = payload;
   return (
     <Card__Container>
       <Card__Title>{name}</Card__Title>
-      {showDetails && (
-        <div>
-          <p>{description}</p>
-          <Card__Categories>
-            {categories.map((category) => (
-              <Tag>{category}</Tag>
-            ))}
-          </Card__Categories>
-        </div>
-      )}
+      <p>{description}</p>
     </Card__Container>
   );
 }
 
 export default Card;
 
-const Card__Container = styled.div`
+const Card__Container = styled.li`
   max-width: 679px;
   border-radius: 14px;
   padding: 20px;
-  background-color: #f8f6f4;
+  background-color: #c2bfbc;
   color: #1d1a1a;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 `;
