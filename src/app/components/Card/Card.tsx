@@ -1,14 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-
-type Stuff = {
-  id: number;
-  name: string;
-  description: string;
-};
+import type { Thing } from '../../Types/types';
 
 type CardProps = {
-  content: Stuff;
+  content: Thing;
 };
 
 function Card({ content }: CardProps): JSX.Element {

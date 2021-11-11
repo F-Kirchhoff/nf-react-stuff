@@ -1,20 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import type { Thing } from '../../Types/types';
 import Tag from '../Tag/Tag';
 
-type Stuff = {
-  id: number;
-  name: string;
-  description: string;
-  categories: string[];
-};
-
 type CardProps = {
-  content: Stuff;
+  content: Thing;
 };
 
 function DetailCard({ content }: CardProps): JSX.Element {
   const { name, description, categories } = content;
+
   return (
     <Card__Container>
       <Card__Title>{name}</Card__Title>
@@ -24,7 +20,7 @@ function DetailCard({ content }: CardProps): JSX.Element {
           <Tag key={tag}>{tag}</Tag>
         ))}
       </Card__Categories>
-      <ReturnButton>back</ReturnButton>
+      <ReturnButton to="/">back</ReturnButton>
     </Card__Container>
   );
 }
@@ -56,14 +52,17 @@ const Card__Categories = styled.ul`
   margin: 0;
 `;
 
-const ReturnButton = styled.button`
+const ReturnButton = styled(Link)`
+  text-decoration: none;
   border: none;
   background-color: transparent;
   position: absolute;
   top: -32px;
+  color: #000;
   opacity: 0.6;
   right: 16px;
   font-size: 1rem;
   font-family: arial;
   font-weight: bold;
+  cursor: pointer;
 `;
