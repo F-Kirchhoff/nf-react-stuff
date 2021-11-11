@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card';
+import DetailCard from './DetailCard';
 
 const TESTSTUFF = {
   id: 1,
@@ -9,8 +9,8 @@ const TESTSTUFF = {
 };
 
 export default {
-  title: 'Component/Card',
-  component: Card,
+  title: 'Component/DetailCard',
+  component: DetailCard,
 };
 
-export const Regular = (): JSX.Element => <Card content={TESTSTUFF} />;
+export const Regular = (): JSX.Element => <DetailCard content={TESTSTUFF} />;

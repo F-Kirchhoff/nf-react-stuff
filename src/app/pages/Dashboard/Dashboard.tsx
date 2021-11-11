@@ -26,7 +26,7 @@ function Dashboard(): JSX.Element {
       <h1>Dashboard</h1>
       <StuffList>
         {things &&
-          things.map((thing) => <Card key={thing.id} payload={thing} />)}
+          things.map((thing) => <Card key={thing.id} content={thing} />)}
       </StuffList>
     </div>
   );
