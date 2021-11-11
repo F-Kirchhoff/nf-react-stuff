@@ -1,19 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Tag from '../Tag/Tag';
-
-type Stuff = {
-  id: number;
-  name: string;
-  description: string;
-};
+import type { Thing } from '../../Types/types';
 
 type CardProps = {
-  payload: Stuff;
+  content: Thing;
 };
 
-function Card({ payload }: CardProps): JSX.Element {
-  const { name, description } = payload;
+function Card({ content }: CardProps): JSX.Element {
+  const { name, description } = content;
   return (
     <Card__Container>
       <Card__Title>{name}</Card__Title>
@@ -35,12 +29,4 @@ const Card__Container = styled.li`
 
 const Card__Title = styled.h2`
   font-size: 1.2rem;
-`;
-
-const Card__Categories = styled.ul`
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
 `;
