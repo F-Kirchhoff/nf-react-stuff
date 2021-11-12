@@ -1,37 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import DetailCard from '../../components/DetailCard/DetailCard';
+import useFetch from '../../hooks/useFetch';
 import type { Thing } from '../../Types/types';
 
 function Stuff(): JSX.Element {
-  const [thing, setThing] = useState<Thing | null>(null);
-  const [loading, setLoading] = useState(true);
-
   const { id } = useParams();
 
-  useEffect(() => {
-    async function fetchThing() {
-      const res = await fetch(`https://json-server.neuefische.de/stuff/${id}`);
-      const fetchedThing = await res.json();
-      setLoading(false);
-      fetchedThing.id
-        ? setThing(fetchedThing)
-        : console.error('404: No Thing found under this id.');
-    }
-
-    fetchThing();
-  }, []);
+  const thing: Thing | null = useFetch<Thing>(
+    `https://json-server.neuefische.de/stuff/${id}`
+  );
 
   return (
     <Stuff__Container>
       <h1>Stuff</h1>
       {thing ? (
-        <DetailCard key={thing.id} content={thing} />
-      ) : !loading ? (
-        <ErrorFlag>404: not found</ErrorFlag>
+        <DetailCard content={thing} />
       ) : (
-        <></>
+        <ErrorFlag>404: not found</ErrorFlag>
       )}
     </Stuff__Container>
   );
