@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Card from '../../components/Card/Card';
 import type { Thing } from '../../Types/types';
 import { Link } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
 
 function Dashboard(): JSX.Element {
-  const [things, setThings] = useState<Thing[] | null>(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch('https://json-server.neuefische.de/stuff');
-      const data = await res.json();
-      setThings(data);
-    }
-    fetchData();
-  });
+  const things = useFetch<Thing[]>('https://json-server.neuefische.de/stuff');
 
   return (
     <div>
