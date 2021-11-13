@@ -10,7 +10,10 @@ function Dashboard(): JSX.Element {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <NavContainer>
+        <h1>Dashboard</h1>
+        <ToAdd to="/add">Add</ToAdd>
+      </NavContainer>
       <StuffList>
         {things &&
           things.map((thing) => (
@@ -35,4 +38,21 @@ const StuffList = styled.ul`
 
 const Detail__Link = styled(Link)`
   text-decoration: none;
+`;
+
+const NavContainer = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+`;
+
+const ToAdd = styled(Link)`
+  text-decoration: none;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  border-radius: 999px;
 `;

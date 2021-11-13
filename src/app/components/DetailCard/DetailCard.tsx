@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import type { Thing } from '../../Types/types';
 import Tag from '../Tag/Tag';
@@ -9,7 +9,17 @@ type CardProps = {
 };
 
 function DetailCard({ content }: CardProps): JSX.Element {
-  const { name, description, categories } = content;
+  const { name, description, categories, id } = content;
+
+  const nav = useNavigate();
+
+  async function handleDelete() {
+    await fetch(`https://json-server.neuefische.de/stuff/${id}`, {
+      method: 'DELETE',
+    });
+
+    nav('/');
+  }
 
   return (
     <Card__Container>
@@ -19,6 +29,7 @@ function DetailCard({ content }: CardProps): JSX.Element {
         {categories && categories.map((tag) => <Tag key={tag}>{tag}</Tag>)}
       </Card__Categories>
       <ReturnButton to="/">back</ReturnButton>
+      <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
     </Card__Container>
   );
 }
@@ -60,6 +71,20 @@ const ReturnButton = styled(Link)`
   opacity: 0.6;
   right: 16px;
   font-size: 1rem;
+  font-family: arial;
+  font-weight: bold;
+  cursor: pointer;
+`;
+
+const DeleteButton = styled.button`
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  bottom: -32px;
+  left: 16px;
+  color: #f33282;
+  opacity: 0.6;
+  font-size: 1.2rem;
   font-family: arial;
   font-weight: bold;
   cursor: pointer;
