@@ -1,0 +1,22 @@
+### Get All
+
+GET https://json-server.neuefische.de/stuff HTTP/1.1
+
+
+### Post
+POST https://json-server.neuefische.de/stuff HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Mana potion",
+  "description": "It restores 65% mana, maybe even in real-life",
+  "categories": [
+    "potion",
+    "glassware",
+    "supernatural"
+  ]
+}
+
+
+###
+Delete https://json-server.neuefische.de/stuff/9 HTTP/1.1
