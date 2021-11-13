@@ -16,9 +16,7 @@ function DetailCard({ content }: CardProps): JSX.Element {
       <Card__Title>{name}</Card__Title>
       <p>{description}</p>
       <Card__Categories>
-        {categories.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
+        {categories && categories.map((tag) => <Tag key={tag}>{tag}</Tag>)}
       </Card__Categories>
       <ReturnButton to="/">back</ReturnButton>
     </Card__Container>
