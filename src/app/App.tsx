@@ -2,13 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Stuff from './pages/Stuff/Stuff';
-
-// const TESTTHING = {
-//   id: 1,
-//   name: "Marf's Magic Cards",
-//   description: 'A few decks for all the colors',
-//   categories: ['game', 'collectible', 'art', 'paper'],
-// };
+import SubmitPage from './pages/SubmitPage/SubmitPage';
 
 function App(): JSX.Element {
   return (
@@ -18,6 +12,7 @@ function App(): JSX.Element {
         <Route path="stuff">
           <Route path=":id" element={<Stuff />}></Route>
         </Route>
+        <Route path="add" element={<SubmitPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
