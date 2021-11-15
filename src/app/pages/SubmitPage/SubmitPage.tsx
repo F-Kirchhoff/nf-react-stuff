@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function SubmitPage(): JSX.Element {
@@ -28,8 +28,8 @@ function SubmitPage(): JSX.Element {
   }
 
   return (
-    <FormContainer>
-      <SubmitForm onSubmit={handleSubmit}>
+    <Form__Container>
+      <Form onSubmit={handleSubmit}>
         <Form__input
           type="text"
           placeholder="name"
@@ -49,23 +49,25 @@ function SubmitPage(): JSX.Element {
           onChange={(event) => setCategories(event.target.value)}
         />
         <SubmitButton>submit</SubmitButton>
-      </SubmitForm>
-    </FormContainer>
+        <ReturnButton to="/">back</ReturnButton>
+      </Form>
+    </Form__Container>
   );
 }
 
 export default SubmitPage;
 
-const FormContainer = styled.div`
+const Form__Container = styled.div`
   width: 100vw;
   display: flex;
   justify-content: center;
 `;
 
-const SubmitForm = styled.form`
+const Form = styled.form`
+  position: relative;
   margin-top: 100px;
   padding: 20px;
-  background-color: #aaaabb;
+  background-color: #b8babe;
   border-radius: 5px;
   display: grid;
   gap: 20px;
@@ -81,11 +83,26 @@ const Form__input = styled.input`
 `;
 
 const SubmitButton = styled.button`
-  background-color: red;
+  background-color: #1cbe88;
   border: none;
   padding: 10px;
   font-size: 20px;
   border-radius: 10px;
   font-weight: bold;
   color: #f8b7b7;
+`;
+
+const ReturnButton = styled(Link)`
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: -32px;
+  color: #000;
+  opacity: 0.6;
+  right: 16px;
+  font-size: 1rem;
+  font-family: arial;
+  font-weight: bold;
+  cursor: pointer;
 `;

@@ -31,7 +31,7 @@ export default Dashboard;
 const StuffList = styled.ul`
   list-style: none;
   display: grid;
-  padding: 0;
+  padding: 10px;
   grid-template-columns: repeat(auto-fill, minmax(auto, 500px));
   gap: 10px;
 `;
