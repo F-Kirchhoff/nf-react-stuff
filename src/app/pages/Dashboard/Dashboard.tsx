@@ -32,7 +32,7 @@ const StuffList = styled.ul`
   list-style: none;
   display: grid;
   padding: 0;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(auto, 500px));
   gap: 10px;
 `;
 
